@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>అఖిల భారత ఫార్వర్డ్ బ్లాక్ — తెలంగాణ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@500;600;700;800&family=Noto+Serif+Telugu:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14100E; --oxblood:#6E1620; --red:#A6202B;
+    --brass:#C9A227; --brass-dim:#8C6E1E; --bone:#ECE5D6; --bone-dim:#B9AF9C;
+    --line:rgba(236,229,214,0.16);
+    --display:'Baloo Tammudu 2',sans-serif; --body:'Noto Serif Telugu',serif; --label:'Noto Sans Telugu',sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--ink); color:var(--bone); font-family:var(--body); line-height:1.7; overflow-x:hidden; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.01ms !important; scroll-behavior:auto !important; } }
+  a{ color:inherit; } img,svg{ display:block; max-width:100%; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+  .eyebrow{ font-family:var(--label); font-size:13px; color:var(--brass); font-weight:600; }
+  h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.06; }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(20,16,14,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 32px; max-width:1120px; margin:0 auto; flex-wrap:wrap; gap:10px; }
+  .brand{ display:flex; align-items:center; gap:8px; font-family:var(--display); font-size:20px; font-weight:700; }
+  .navlinks{ display:flex; gap:20px; font-family:var(--label); font-size:12.5px; flex-wrap:wrap; }
+  .navlinks a{ text-decoration:none; color:var(--bone-dim); transition:color .2s; }
+  .navlinks a:hover{ color:var(--brass); }
+
+  .homehero{ background:linear-gradient(155deg, var(--oxblood) 0%, var(--oxblood) 46%, var(--ink) 46.4%, var(--ink) 100%); padding:64px 0 56px; }
+  .homehero h1{ font-size:clamp(36px,6vw,60px); margin-top:14px; }
+  .homehero h1 em{ font-style:normal; color:var(--brass); display:block; }
+  .homehero p{ color:var(--bone-dim); max-width:56ch; margin-top:16px; font-size:16px; }
+
+  .cardgrid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:36px; }
+  @media (max-width:680px){ .cardgrid{ grid-template-columns:1fr; } }
+  a.card{ display:block; background:var(--ink); padding:28px 24px; text-decoration:none; color:var(--bone); transition:background .2s; }
+  a.card:hover{ background:#1B1613; }
+  .card .tag{ font-family:var(--label); font-size:12px; color:var(--brass-dim); }
+  .card h2{ font-size:28px; margin:8px 0 8px; }
+  .card p{ font-size:13.5px; color:var(--bone-dim); }
+  .card .go{ font-family:var(--label); font-size:12px; color:var(--brass); margin-top:12px; }
+
+  .divsection{ padding:80px 0; border-bottom:1px solid var(--line); scroll-margin-top:70px; display:none; }
+  .divsection.active{ display:block; }
+  .homehero{ display:none; }
+  .homehero.active{ display:block; }
+  .backlink{ font-family:var(--label); font-size:12.5px; color:var(--brass); text-decoration:none; display:inline-block; margin-bottom:18px; }
+  .backlink:hover{ text-decoration:underline; }
+  .divhero{ background:linear-gradient(155deg, var(--oxblood) 0%, var(--oxblood) 42%, var(--ink) 42.3%, var(--ink) 100%); padding:56px 32px 44px; margin:0 -32px 44px; position:relative; }
+  @media (max-width:640px){ .divhero{ margin:0 -20px 40px; padding:48px 20px 36px; } }
+  .divhero .parent-line{ font-family:var(--label); font-size:12.5px; color:var(--brass); font-weight:600; margin-bottom:14px; }
+  .divhero h2.bigh1{ font-size:clamp(34px,6vw,64px); }
+  .divhero h2.bigh1 em{ font-style:normal; color:var(--brass); display:block; }
+  .divhero .sub{ max-width:60ch; color:var(--bone-dim); font-size:16px; margin-top:14px; }
+  .divhero .statbadge{ position:absolute; top:44px; right:32px; text-align:right; }
+  .divhero .statbadge .n{ font-family:var(--display); font-size:clamp(48px,8vw,88px); color:var(--red); -webkit-text-stroke:0.6px var(--brass); line-height:0.85; }
+  .divhero .statbadge .cap{ font-family:var(--label); font-size:11.5px; color:var(--bone-dim); max-width:22ch; margin-left:auto; margin-top:4px; }
+  @media (max-width:820px){ .divhero .statbadge{ position:static; margin-top:18px; text-align:left; } .divhero .statbadge .cap{ margin-left:0; } }
+
+  .pillars{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:44px; }
+  @media (max-width:900px){ .pillars{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .pillars{ grid-template-columns:1fr; } }
+  .pillar{ background:var(--ink); padding:26px 22px; }
+  .pillar .idx{ font-family:var(--label); color:var(--brass-dim); font-size:12.5px; }
+  .pillar h3{ font-size:23px; margin:8px 0 10px; color:var(--bone); }
+  .pillar p{ font-size:13.5px; color:var(--bone-dim); }
+
+  .spotlight{ background:var(--red); padding:36px 32px; margin:0 -32px 44px; }
+  @media (max-width:640px){ .spotlight{ margin:0 -20px 40px; padding:30px 20px; } }
+  .spotlight p{ color:rgba(20,16,14,0.85); max-width:70ch; font-size:15px; }
+  .stat-row{ display:flex; gap:36px; margin-top:22px; flex-wrap:wrap; }
+  .stat .n{ font-family:var(--display); font-size:44px; color:var(--ink); line-height:0.9; font-weight:800; }
+  .stat .l{ font-family:var(--label); font-size:11.5px; color:rgba(20,16,14,0.72); max-width:16ch; }
+
+  .step{ display:grid; grid-template-columns:70px 1fr; gap:20px; padding:22px 0; border-top:1px solid var(--line); }
+  .step:last-child{ border-bottom:1px solid var(--line); }
+  .step .n{ font-family:var(--display); font-size:38px; color:var(--brass-dim); font-weight:800; }
+  .step h3{ font-size:20px; color:var(--bone); margin-bottom:4px; }
+  .step p{ color:var(--bone-dim); font-size:14px; }
+
+  .joinbox{ margin-top:44px; background:linear-gradient(180deg,var(--ink),#1B1613); border:1px solid var(--line); padding:32px; }
+  @media (max-width:640px){ .joinbox{ padding:22px; } }
+  .joinbox h3.jh{ font-size:clamp(26px,4vw,36px); margin-bottom:16px; font-family:var(--display); font-weight:700; }
+  form{ display:flex; flex-direction:column; gap:14px; max-width:560px; }
+  .field label{ display:block; font-family:var(--label); font-size:12px; color:var(--brass-dim); margin-bottom:6px; font-weight:600; }
+  .field input{ width:100%; background:transparent; border:none; border-bottom:1px solid var(--line); color:var(--bone); font-family:var(--body); font-size:15px; padding:8px 2px; outline:none; }
+  .field input:focus{ border-color:var(--brass); }
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:480px){ .row2{ grid-template-columns:1fr; } }
+  .submit{ margin-top:8px; align-self:flex-start; background:var(--brass); color:var(--ink); border:none; font-family:var(--label); font-size:13px; font-weight:600; padding:13px 26px; cursor:pointer; }
+  .submit:hover{ background:var(--bone); }
+  .form-note{ font-size:11.5px; color:var(--bone-dim); margin-top:2px; }
+  .confirm{ display:none; border:1px solid var(--brass); padding:12px 14px; font-size:13px; color:var(--brass); margin-top:4px; }
+  .confirm.show{ display:block; }
+
+  footer{ padding:40px 0; }
+  footer p{ font-size:12px; color:var(--bone-dim); opacity:.75; line-height:1.6; }
+  footer a{ color:var(--brass); text-decoration:none; }
+  :focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">అఖిల భారత ఫార్వర్డ్ బ్లాక్ · తెలంగాణ</div>
+    <div class="navlinks"><a href="#home" onclick="showPage('home');return false;">హోమ్</a><a href="#youth" onclick="showPage('youth');return false;">యువజన లీగ్</a><a href="#students" onclick="showPage('students');return false;">విద్యార్థి బ్లాక్</a><a href="#women" onclick="showPage('women');return false;">మహిళా సమితి</a><a href="#labour" onclick="showPage('labour');return false;">TUCC</a><a href="#farmers" onclick="showPage('farmers');return false;">కిసాన్ సభ</a></div>
+  </nav>
+</header>
+
+<section id="home" class="homehero active">
+  <div class="wrap">
+    <p class="eyebrow">స్థాపన 1939</p>
+    <h1>అఖిల భారత<br><em>ఫార్వర్డ్ బ్లాక్.</em></h1>
+    <p>నేతాజీ సుభాష్ చంద్రబోస్ స్థాపించిన పార్టీ. కింద మీకు సరిపోయే విభాగాన్ని ఎంచుకుని, స్థానికంగా సంఘటితం కావడం ఎలాగో తెలుసుకోండి.</p>
+    <div class="cardgrid">
+      <a class="card" href="#youth" onclick="showPage('youth');return false;">
+        <div class="tag">AIYL</div>
+        <h2>యువజన లీగ్</h2>
+        <p>వలస పాలనపై పోరాటంలో సుభాష్ చంద్రబోస్ స్థాపించిన ఫార్వర్డ్ బ్లాక్‌ను ఎప…</p>
+        <div class="go">విభాగం చూడండి →</div>
+      </a>
+      <a class="card" href="#students" onclick="showPage('students');return false;">
+        <div class="tag">AISB</div>
+        <h2>విద్యార్థి బ్లాక్</h2>
+        <p>ఫీజుల పెంపు, హాస్టల్ సమస్యలు, విద్యా హక్కులపై పోరాటం తరగతి గదిలో మొదలవ…</p>
+        <div class="go">విభాగం చూడండి →</div>
+      </a>
+      <a class="card" href="#women" onclick="showPage('women');return false;">
+        <div class="tag">AMS</div>
+        <h2>మహిళా సమితి</h2>
+        <p>పని ప్రదేశాల్లో, ఇళ్లలో, వీధుల్లో మహిళల సమాన హక్కుల కోసం అఖిల భారత అగ్…</p>
+        <div class="go">విభాగం చూడండి →</div>
+      </a>
+      <a class="card" href="#labour" onclick="showPage('labour');return false;">
+        <div class="tag">TUCC</div>
+        <h2>TUCC</h2>
+        <p>కార్మిక సంఘాల సమన్వయ కేంద్రం (TUCC) 1970 నుండి కర్మాగారాల్లో, వ్యవసాయ …</p>
+        <div class="go">విభాగం చూడండి →</div>
+      </a>
+      <a class="card" href="#farmers" onclick="showPage('farmers');return false;">
+        <div class="tag">AKS</div>
+        <h2>కిసాన్ సభ</h2>
+        <p>భూమి హక్కులు, గిట్టుబాటు ధరలు, రుణ విముక్తి కోసం అఖిల భారత అగ్రగామి కి…</p>
+        <div class="go">విభాగం చూడండి →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section id="page-youth" class="divsection">
+  <div class="wrap">
+    <a class="backlink" href="#home" onclick="showPage('home');return false;">← హోమ్‌కు తిరిగి వెళ్ళండి</a>
+    <div class="divhero">
+      <div class="parent-line">అఖిల భారత ఫార్వర్డ్ బ్లాక్ యువజన విభాగం</div>
+      <h2 class="bigh1">ముందుకు<em>సాగండి.</em></h2>
+      <p class="sub">వలస పాలనపై పోరాటంలో సుభాష్ చంద్రబోస్ స్థాపించిన ఫార్వర్డ్ బ్లాక్‌ను ఎప్పుడూ దాని అతి చిన్న సభ్యులే ముందుకు నడిపించారు. ఆ పని కొనసాగించే చోటు అఖిల భారత యువజన లీగ్.</p>
+      <div class="statbadge"><div class="n">1928</div><div class="cap">లీగ్ స్థాపన — భారతదేశ పురాతన యువజన రాజకీయ సంస్థల్లో ఒకటి</div></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><div class="idx">01 / ఉద్యోగం</div><h3>నినాదాలు కాదు, ఉద్యోగాలు</h3><p>నిజమైన ఉపాధి హామీల కోసం, పని కోసం సొంత ఊరిని వదిలి వలస వెళ్లాల్సిన అవసరం లేని ఆర్థిక వ్యవస్థ కోసం మేము పోరాడుతున్నాం.</p></div>
+      <div class="pillar"><div class="idx">02 / సమానత్వం</div><h3>వర్గ పోరాటం</h3><p>సంపద, అధికార కేంద్రీకరణకు వ్యతిరేకంగా కార్మిక, రైతు సంఘాలతో కలిసి నిలబడటం.</p></div>
+      <div class="pillar"><div class="idx">03 / సార్వభౌమత్వం</div><h3>స్వావలంబన</h3><p>బాహ్య శక్తులపై ఆర్థిక, రాజకీయ ఆధారపడటాన్ని తగ్గించడం.</p></div>
+      <div class="pillar"><div class="idx">04 / గొంతుక</div><h3>సంఘటిత అసమ్మతి</h3><p>వాదించడం, సంఘటితం కావడం, అధికారాన్ని జవాబుదారీగా ఉంచడంలో ఒక తరాన్ని తీర్చిదిద్దడం.</p></div>
+    </div>
+
+    <div class="spotlight">
+      <p class="eyebrow" style="color:var(--ink);opacity:.7;margin-bottom:10px;">అఖిల భారత యువజన లీగ్</p>
+      <p>AIYL కళాశాల విభాగాలు, అధ్యయన వర్గాలు, స్థానిక ప్రచారాల క్షేత్రస్థాయి పని నిర్వహిస్తుంది — ఇతర విభాగాలతో కలిసి విస్తృత ఉద్యమంలో భాగంగా.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">1928</div><div class="l">లీగ్ స్థాపన</div></div>
+        <div class="stat"><div class="n">4+</div><div class="l">అనుబంధ సంస్థలు</div></div>
+        <div class="stat"><div class="n">86</div><div class="l">AIFB స్థాపించి సంవత్సరాలు</div></div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>మీ ఆసక్తిని నమోదు చేయండి</h3><p>మీ నగరం, కళాశాల వివరాలు తెలియజేయండి.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>మీ స్థానిక యూనిట్‌ను కలవండి</h3><p>నిర్వాహకుడు మిమ్మల్ని సమావేశానికి ఆహ్వానిస్తారు.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>యువజన లీగ్‌లో చేరండి</h3><p>అధికారిక సభ్యత్వం మీ రాష్ట్ర యూనిట్ ద్వారా జరుగుతుంది.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>మీరు ఉన్నచోటే సంఘటితం కండి</h3><p>స్థానిక యూనిట్లే లీగ్ బలం.</p></div></div>
+    </div>
+
+    <div class="joinbox">
+      <h3 class="jh">ఆసక్తి నమోదు — అఖిల భారత యువజన లీగ్</h3>
+      <form id="joinForm-youth" data-org="అఖిల భారత యువజన లీగ్">
+        <div class="field"><label for="name-youth">పూర్తి పేరు</label><input id="name-youth" type="text" required placeholder="మీ పేరు"></div>
+        <div class="row2">
+          <div class="field"><label for="city-youth">నగరం / జిల్లా</label><input id="city-youth" type="text" required placeholder="ఉదా. హైదరాబాద్"></div>
+          <div class="field"><label for="state-youth">రాష్ట్రం</label><input id="state-youth" type="text" required placeholder="ఉదా. తెలంగాణ"></div>
+        </div>
+        <div class="field"><label for="contact-youth">ఫోన్ లేదా ఇమెయిల్</label><input id="contact-youth" type="text" required placeholder="మిమ్మల్ని ఎలా సంప్రదించాలి"></div>
+        <div class="field"><label for="context-youth">కళాశాల / పనిస్థలం (ఐచ్ఛికం)</label><input id="context-youth" type="text" placeholder="మేము ఎక్కడ విభాగం ఏర్పాటు చేయాలి?"></div>
+        <button class="submit" type="submit">ఆసక్తిని సమర్పించండి</button>
+        <p class="form-note">సమర్పించు నొక్కినప్పుడు మీ ఇమెయిల్ యాప్‌లో ఈ వివరాలతో ఒక సందేశం తెరుచుకుంటుంది.</p>
+        <div class="confirm" id="confirmMsg-youth">నమోదైంది. మీ ఇమెయిల్ యాప్ ఇప్పుడు తెరుచుకుని ఉండాలి — పంపండి నొక్కి పూర్తి చేయండి.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="page-students" class="divsection">
+  <div class="wrap">
+    <a class="backlink" href="#home" onclick="showPage('home');return false;">← హోమ్‌కు తిరిగి వెళ్ళండి</a>
+    <div class="divhero">
+      <div class="parent-line">అఖిల భారత ఫార్వర్డ్ బ్లాక్ విద్యార్థి విభాగం</div>
+      <h2 class="bigh1">క్యాంపస్‌లో<em>సంఘటితం కండి.</em></h2>
+      <p class="sub">ఫీజుల పెంపు, హాస్టల్ సమస్యలు, విద్యా హక్కులపై పోరాటం తరగతి గదిలో మొదలవుతుంది. AISB కళాశాలలు, విశ్వవిద్యాలయాల్లో విద్యార్థుల గొంతును సంఘటితం చేస్తుంది.</p>
+      <div class="statbadge"><div class="n">1939</div><div class="cap">పార్టీ స్థాపించిన సంవత్సరం నుండి కళాశాలల్లో విద్యార్థుల గొంతుకగా పనిచేస్తున్న సంప్రదాయం</div></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><div class="idx">01 / విద్య</div><h3>ఖర్చు లేని విద్య</h3><p>అందరికీ అందుబాటులో ఉండే, నాణ్యమైన ప్రభుత్వ విద్య కోసం, ఫీజుల పెంపుదలకు వ్యతిరేకంగా పోరాడటం.</p></div>
+      <div class="pillar"><div class="idx">02 / వసతి</div><h3>హాస్టల్ హక్కులు</h3><p>సురక్షితమైన వసతి, న్యాయమైన మెస్ చార్జీల కోసం నిలబడటం.</p></div>
+      <div class="pillar"><div class="idx">03 / గొంతుక</div><h3>క్యాంపస్ ప్రజాస్వామ్యం</h3><p>కళాశాల యూనియన్ ఎన్నికలు, విద్యార్థి ప్రాతినిధ్యం కోసం.</p></div>
+      <div class="pillar"><div class="idx">04 / భవిష్యత్తు</div><h3>ఉద్యోగ భద్రత</h3><p>డిగ్రీ తర్వాత అర్థవంతమైన ఉపాధి కోసం విధానపరమైన మార్పులను కోరడం.</p></div>
+    </div>
+
+    <div class="spotlight">
+      <p class="eyebrow" style="color:var(--ink);opacity:.7;margin-bottom:10px;">అఖిల భారత విద్యార్థి బ్లాక్</p>
+      <p>AISB కళాశాల యూనిట్లను నిర్వహిస్తుంది, ఫీజు వ్యతిరేక ఉద్యమాలను నడుపుతుంది, విద్యార్థి సమస్యలపై స్టడీ సర్కిల్స్ నిర్వహిస్తుంది.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">1939</div><div class="l">పార్టీ స్థాపన సంవత్సరం</div></div>
+        <div class="stat"><div class="n">3+</div><div class="l">అనుబంధ విభాగాలు</div></div>
+        <div class="stat"><div class="n">86</div><div class="l">AIFB స్థాపించి సంవత్సరాలు</div></div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>మీ ఆసక్తిని నమోదు చేయండి</h3><p>మీ కళాశాల పేరు, నగరం తెలియజేయండి.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>మీ క్యాంపస్ యూనిట్‌ను కలవండి</h3><p>నిర్వాహకుడు మిమ్మల్ని స్టడీ సర్కిల్‌కు ఆహ్వానిస్తారు.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>విద్యార్థి బ్లాక్‌లో చేరండి</h3><p>అధికారిక సభ్యత్వం మీ రాష్ట్ర యూనిట్ ద్వారా జరుగుతుంది.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>మీ కళాశాలలో సంఘటితం కండి</h3><p>స్థానిక యూనిట్లే బ్లాక్ బలం.</p></div></div>
+    </div>
+
+    <div class="joinbox">
+      <h3 class="jh">ఆసక్తి నమోదు — అఖిల భారత విద్యార్థి బ్లాక్</h3>
+      <form id="joinForm-students" data-org="అఖిల భారత విద్యార్థి బ్లాక్">
+        <div class="field"><label for="name-students">పూర్తి పేరు</label><input id="name-students" type="text" required placeholder="మీ పేరు"></div>
+        <div class="row2">
+          <div class="field"><label for="city-students">నగరం / జిల్లా</label><input id="city-students" type="text" required placeholder="ఉదా. హైదరాబాద్"></div>
+          <div class="field"><label for="state-students">రాష్ట్రం</label><input id="state-students" type="text" required placeholder="ఉదా. తెలంగాణ"></div>
+        </div>
+        <div class="field"><label for="contact-students">ఫోన్ లేదా ఇమెయిల్</label><input id="contact-students" type="text" required placeholder="మిమ్మల్ని ఎలా సంప్రదించాలి"></div>
+        <div class="field"><label for="context-students">కళాశాల పేరు</label><input id="context-students" type="text" placeholder="మీరు చదువుతున్న కళాశాల"></div>
+        <button class="submit" type="submit">ఆసక్తిని సమర్పించండి</button>
+        <p class="form-note">సమర్పించు నొక్కినప్పుడు మీ ఇమెయిల్ యాప్‌లో ఈ వివరాలతో ఒక సందేశం తెరుచుకుంటుంది.</p>
+        <div class="confirm" id="confirmMsg-students">నమోదైంది. మీ ఇమెయిల్ యాప్ ఇప్పుడు తెరుచుకుని ఉండాలి — పంపండి నొక్కి పూర్తి చేయండి.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="page-women" class="divsection">
+  <div class="wrap">
+    <a class="backlink" href="#home" onclick="showPage('home');return false;">← హోమ్‌కు తిరిగి వెళ్ళండి</a>
+    <div class="divhero">
+      <div class="parent-line">అఖిల భారత ఫార్వర్డ్ బ్లాక్ మహిళా విభాగం</div>
+      <h2 class="bigh1">సమానత్వం<em>కోసం నిలబడు.</em></h2>
+      <p class="sub">పని ప్రదేశాల్లో, ఇళ్లలో, వీధుల్లో మహిళల సమాన హక్కుల కోసం అఖిల భారత అగ్రగామి మహిళా సమితి సంఘటితమవుతుంది.</p>
+      <div class="statbadge"><div class="n">1939</div><div class="cap">పార్టీ స్థాపన నుండి మహిళా సాధికారత దాని ఆశయాల్లో భాగంగా ఉంది</div></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><div class="idx">01 / పని</div><h3>సమాన వేతనం</h3><p>మహిళా కార్మికులకు సమాన పనికి సమాన వేతనం, పని ప్రదేశాల్లో భద్రత కోసం పోరాడటం.</p></div>
+      <div class="pillar"><div class="idx">02 / భద్రత</div><h3>వేధింపుల నుంచి రక్షణ</h3><p>గృహహింస, లైంగిక వేధింపులపై కఠిన చట్టాల అమలు కోసం ఒత్తిడి తేవడం.</p></div>
+      <div class="pillar"><div class="idx">03 / భాగస్వామ్యం</div><h3>రాజకీయ ప్రాతినిధ్యం</h3><p>స్థానిక సంస్థల నుండి శాసనసభ వరకు మహిళా ప్రాతినిధ్యాన్ని పెంచడం.</p></div>
+      <div class="pillar"><div class="idx">04 / విద్య</div><h3>బాలికల విద్య</h3><p>బాలికల డ్రాపౌట్లను తగ్గించే విధానాల కోసం పోరాడటం.</p></div>
+    </div>
+
+    <div class="spotlight">
+      <p class="eyebrow" style="color:var(--ink);opacity:.7;margin-bottom:10px;">అఖిల భారత అగ్రగామి మహిళా సమితి</p>
+      <p>సమితి కార్మిక మహిళలు, గృహిణులు, రైతు మహిళల సమస్యలపై స్థానిక యూనిట్లను నడుపుతుంది, అవగాహన సదస్సులు నిర్వహిస్తుంది.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">1939</div><div class="l">పార్టీ స్థాపన సంవత్సరం</div></div>
+        <div class="stat"><div class="n">4+</div><div class="l">అనుబంధ విభాగాలు</div></div>
+        <div class="stat"><div class="n">86</div><div class="l">AIFB స్థాపించి సంవత్సరాలు</div></div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>మీ ఆసక్తిని నమోదు చేయండి</h3><p>మీ నగరం, వృత్తి వివరాలు తెలియజేయండి.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>మీ స్థానిక యూనిట్‌ను కలవండి</h3><p>నిర్వాహకురాలు మిమ్మల్ని సమావేశానికి ఆహ్వానిస్తారు.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>మహిళా సమితిలో చేరండి</h3><p>అధికారిక సభ్యత్వం మీ రాష్ట్ర యూనిట్ ద్వారా జరుగుతుంది.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>మీ ప్రాంతంలో సంఘటితం కండి</h3><p>స్థానిక యూనిట్లే సమితి బలం.</p></div></div>
+    </div>
+
+    <div class="joinbox">
+      <h3 class="jh">ఆసక్తి నమోదు — అఖిల భారత అగ్రగామి మహిళా సమితి</h3>
+      <form id="joinForm-women" data-org="అఖిల భారత అగ్రగామి మహిళా సమితి">
+        <div class="field"><label for="name-women">పూర్తి పేరు</label><input id="name-women" type="text" required placeholder="మీ పేరు"></div>
+        <div class="row2">
+          <div class="field"><label for="city-women">నగరం / జిల్లా</label><input id="city-women" type="text" required placeholder="ఉదా. హైదరాబాద్"></div>
+          <div class="field"><label for="state-women">రాష్ట్రం</label><input id="state-women" type="text" required placeholder="ఉదా. తెలంగాణ"></div>
+        </div>
+        <div class="field"><label for="contact-women">ఫోన్ లేదా ఇమెయిల్</label><input id="contact-women" type="text" required placeholder="మిమ్మల్ని ఎలా సంప్రదించాలి"></div>
+        <div class="field"><label for="context-women">వృత్తి / కార్యక్షేత్రం (ఐచ్ఛికం)</label><input id="context-women" type="text" placeholder="మీరు ఎక్కడ యూనిట్ ఏర్పాటు కోరుకుంటున్నారు?"></div>
+        <button class="submit" type="submit">ఆసక్తిని సమర్పించండి</button>
+        <p class="form-note">సమర్పించు నొక్కినప్పుడు మీ ఇమెయిల్ యాప్‌లో ఈ వివరాలతో ఒక సందేశం తెరుచుకుంటుంది.</p>
+        <div class="confirm" id="confirmMsg-women">నమోదైంది. మీ ఇమెయిల్ యాప్ ఇప్పుడు తెరుచుకుని ఉండాలి — పంపండి నొక్కి పూర్తి చేయండి.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="page-labour" class="divsection">
+  <div class="wrap">
+    <a class="backlink" href="#home" onclick="showPage('home');return false;">← హోమ్‌కు తిరిగి వెళ్ళండి</a>
+    <div class="divhero">
+      <div class="parent-line">అఖిల భారత ఫార్వర్డ్ బ్లాక్ కార్మిక విభాగం</div>
+      <h2 class="bigh1">శ్రమకు<em>గౌరవం.</em></h2>
+      <p class="sub">కార్మిక సంఘాల సమన్వయ కేంద్రం (TUCC) 1970 నుండి కర్మాగారాల్లో, వ్యవసాయ కూలీల్లో, అసంఘటిత రంగంలో కార్మికుల హక్కుల కోసం పోరాడుతోంది.</p>
+      <div class="statbadge"><div class="n">1970</div><div class="cap">TUCC స్థాపన — దేశవ్యాప్తంగా లక్షలాది మంది కార్మికులను సంఘటితం చేస్తూ</div></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><div class="idx">01 / వేతనం</div><h3>కనీస వేతన అమలు</h3><p>ప్రతి రంగంలో చట్టబద్ధమైన కనీస వేతనం, సకాలంలో చెల్లింపుల కోసం పోరాడటం.</p></div>
+      <div class="pillar"><div class="idx">02 / భద్రత</div><h3>ఉద్యోగ భద్రత</h3><p>అన్యాయమైన తొలగింపులకు, కాంట్రాక్టు దోపిడీకి వ్యతిరేకంగా నిలబడటం.</p></div>
+      <div class="pillar"><div class="idx">03 / సంక్షేమం</div><h3>సామాజిక భద్రత</h3><p>పెన్షన్, బీమా, ఆరోగ్య సదుపాయాలు అసంఘటిత కార్మికులకూ అందేలా ఒత్తిడి తేవడం.</p></div>
+      <div class="pillar"><div class="idx">04 / హక్కు</div><h3>సంఘం పెట్టుకునే హక్కు</h3><p>కార్మిక సంఘాలు ఏర్పాటు చేసుకుని బేరసారాలాడే హక్కును కాపాడటం.</p></div>
+    </div>
+
+    <div class="spotlight">
+      <p class="eyebrow" style="color:var(--ink);opacity:.7;margin-bottom:10px;">కార్మిక సంఘాల సమన్వయ కేంద్రం</p>
+      <p>TUCC కర్మాగారాలు, రవాణా, వ్యవసాయ కూలీలు, ప్రభుత్వ రంగ ఉద్యోగుల్లో యూనియన్లను నిర్వహిస్తుంది, వేతన ఒప్పందాల కోసం చర్చలు జరుపుతుంది.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">1970</div><div class="l">TUCC స్థాపన సంవత్సరం</div></div>
+        <div class="stat"><div class="n">16 లక్షలు+</div><div class="l">సభ్యులు (2013 గణాంకాలు)</div></div>
+        <div class="stat"><div class="n">12</div><div class="l">కేంద్ర గుర్తింపు పొందిన సంఘాల్లో ఒకటి</div></div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>మీ ఆసక్తిని నమోదు చేయండి</h3><p>మీ పరిశ్రమ, నగరం వివరాలు తెలియజేయండి.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>మీ యూనియన్ ప్రతినిధిని కలవండి</h3><p>నిర్వాహకుడు మిమ్మల్ని సమావేశానికి ఆహ్వానిస్తారు.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>TUCCలో చేరండి</h3><p>అధికారిక సభ్యత్వం మీ పరిశ్రమ లేదా ప్రాంత సంఘం ద్వారా జరుగుతుంది.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>మీ కార్యక్షేత్రంలో సంఘటితం కండి</h3><p>స్థానిక యూనియన్లే TUCC బలం.</p></div></div>
+    </div>
+
+    <div class="joinbox">
+      <h3 class="jh">ఆసక్తి నమోదు — కార్మిక సంఘాల సమన్వయ కేంద్రం</h3>
+      <form id="joinForm-labour" data-org="కార్మిక సంఘాల సమన్వయ కేంద్రం">
+        <div class="field"><label for="name-labour">పూర్తి పేరు</label><input id="name-labour" type="text" required placeholder="మీ పేరు"></div>
+        <div class="row2">
+          <div class="field"><label for="city-labour">నగరం / జిల్లా</label><input id="city-labour" type="text" required placeholder="ఉదా. హైదరాబాద్"></div>
+          <div class="field"><label for="state-labour">రాష్ట్రం</label><input id="state-labour" type="text" required placeholder="ఉదా. తెలంగాణ"></div>
+        </div>
+        <div class="field"><label for="contact-labour">ఫోన్ లేదా ఇమెయిల్</label><input id="contact-labour" type="text" required placeholder="మిమ్మల్ని ఎలా సంప్రదించాలి"></div>
+        <div class="field"><label for="context-labour">పరిశ్రమ / కార్యక్షేత్రం</label><input id="context-labour" type="text" placeholder="మీ పరిశ్రమ లేదా విభాగం పేరు"></div>
+        <button class="submit" type="submit">ఆసక్తిని సమర్పించండి</button>
+        <p class="form-note">సమర్పించు నొక్కినప్పుడు మీ ఇమెయిల్ యాప్‌లో ఈ వివరాలతో ఒక సందేశం తెరుచుకుంటుంది.</p>
+        <div class="confirm" id="confirmMsg-labour">నమోదైంది. మీ ఇమెయిల్ యాప్ ఇప్పుడు తెరుచుకుని ఉండాలి — పంపండి నొక్కి పూర్తి చేయండి.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="page-farmers" class="divsection">
+  <div class="wrap">
+    <a class="backlink" href="#home" onclick="showPage('home');return false;">← హోమ్‌కు తిరిగి వెళ్ళండి</a>
+    <div class="divhero">
+      <div class="parent-line">అఖిల భారత ఫార్వర్డ్ బ్లాక్ రైతు విభాగం</div>
+      <h2 class="bigh1">నేల కోసం.<em>న్యాయం కోసం.</em></h2>
+      <p class="sub">భూమి హక్కులు, గిట్టుబాటు ధరలు, రుణ విముక్తి కోసం అఖిల భారత అగ్రగామి కిసాన్ సభ రైతులు, వ్యవసాయ కూలీలను సంఘటితం చేస్తుంది.</p>
+      <div class="statbadge"><div class="n">1939</div><div class="cap">పార్టీ స్థాపన నుండి రైతు పోరాటం దాని ఆశయాల్లో ప్రధాన భాగంగా ఉంది</div></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><div class="idx">01 / భూమి</div><h3>భూ సంస్కరణలు</h3><p>కౌలు రైతులకు భూమి హక్కులు, భూ పంపిణీలో న్యాయం కోసం పోరాడటం.</p></div>
+      <div class="pillar"><div class="idx">02 / ధర</div><h3>గిట్టుబాటు ధర</h3><p>పంటలకు కనీస మద్దతు ధర, సకాలంలో సేకరణ కోసం డిమాండ్ చేయడం.</p></div>
+      <div class="pillar"><div class="idx">03 / రుణం</div><h3>రుణ విముక్తి</h3><p>వడ్డీ వ్యాపారుల దోపిడీ నుండి రైతులను రక్షించడం.</p></div>
+      <div class="pillar"><div class="idx">04 / కూలీలు</div><h3>వ్యవసాయ కూలీల హక్కులు</h3><p>కనీస వేతనం, పని దినాల భద్రత కోసం కలిసి నిలబడటం.</p></div>
+    </div>
+
+    <div class="spotlight">
+      <p class="eyebrow" style="color:var(--ink);opacity:.7;margin-bottom:10px;">అఖిల భారత అగ్రగామి కిసాన్ సభ</p>
+      <p>కిసాన్ సభ గ్రామ స్థాయి యూనిట్లను నడుపుతుంది, ధరల డిమాండ్ల కోసం ఆందోళనలు నిర్వహిస్తుంది, రుణ సమస్యలపై రైతులకు మద్దతుగా నిలుస్తుంది.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">1939</div><div class="l">పార్టీ స్థాపన సంవత్సరం</div></div>
+        <div class="stat"><div class="n">4+</div><div class="l">అనుబంధ విభాగాలు</div></div>
+        <div class="stat"><div class="n">86</div><div class="l">AIFB స్థాపించి సంవత్సరాలు</div></div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>మీ ఆసక్తిని నమోదు చేయండి</h3><p>మీ గ్రామం, మండలం వివరాలు తెలియజేయండి.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>మీ గ్రామ యూనిట్‌ను కలవండి</h3><p>నిర్వాహకుడు మిమ్మల్ని రైతు సమావేశానికి ఆహ్వానిస్తారు.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>కిసాన్ సభలో చేరండి</h3><p>అధికారిక సభ్యత్వం మీ మండల లేదా జిల్లా యూనిట్ ద్వారా జరుగుతుంది.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>మీ గ్రామంలో సంఘటితం కండి</h3><p>గ్రామ యూనిట్లే కిసాన్ సభ బలం.</p></div></div>
+    </div>
+
+    <div class="joinbox">
+      <h3 class="jh">ఆసక్తి నమోదు — అఖిల భారత అగ్రగామి కిసాన్ సభ</h3>
+      <form id="joinForm-farmers" data-org="అఖిల భారత అగ్రగామి కిసాన్ సభ">
+        <div class="field"><label for="name-farmers">పూర్తి పేరు</label><input id="name-farmers" type="text" required placeholder="మీ పేరు"></div>
+        <div class="row2">
+          <div class="field"><label for="city-farmers">నగరం / జిల్లా</label><input id="city-farmers" type="text" required placeholder="ఉదా. హైదరాబాద్"></div>
+          <div class="field"><label for="state-farmers">రాష్ట్రం</label><input id="state-farmers" type="text" required placeholder="ఉదా. తెలంగాణ"></div>
+        </div>
+        <div class="field"><label for="contact-farmers">ఫోన్ లేదా ఇమెయిల్</label><input id="contact-farmers" type="text" required placeholder="మిమ్మల్ని ఎలా సంప్రదించాలి"></div>
+        <div class="field"><label for="context-farmers">గ్రామం / మండలం (ఐచ్ఛికం)</label><input id="context-farmers" type="text" placeholder="మీ గ్రామం లేదా మండలం పేరు"></div>
+        <button class="submit" type="submit">ఆసక్తిని సమర్పించండి</button>
+        <p class="form-note">సమర్పించు నొక్కినప్పుడు మీ ఇమెయిల్ యాప్‌లో ఈ వివరాలతో ఒక సందేశం తెరుచుకుంటుంది.</p>
+        <div class="confirm" id="confirmMsg-farmers">నమోదైంది. మీ ఇమెయిల్ యాప్ ఇప్పుడు తెరుచుకుని ఉండాలి — పంపండి నొక్కి పూర్తి చేయండి.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <p>ఇది అఖిల భారత ఫార్వర్డ్ బ్లాక్ (స్థాపన 1939) నుండి ప్రేరణ పొందిన అనధికారిక తెలంగాణ అవుట్రీచ్ సైట్. వివరాల కోసం: <a href="mailto:aifbtelangana1939@gmail.com">aifbtelangana1939@gmail.com</a> · మాతృ పార్టీ: <a href="https://allindiaforwardbloc.org" target="_blank" rel="noopener">allindiaforwardbloc.org</a><br>ప్రచురించే ముందు వాస్తవాలు, బ్రాండింగ్, సంప్రదింపు వివరాలను మీ రాష్ట్ర కమిటీతో ధృవీకరించుకోండి.</p>
+  </div>
+</footer>
+
+<script>
+  const PAGES = ['home', 'youth', 'students', 'women', 'labour', 'farmers'];
+
+  function showPage(id) {
+    if (!PAGES.includes(id)) id = 'home';
+    document.getElementById('home').classList.toggle('active', id === 'home');
+    PAGES.filter(p => p !== 'home').forEach(function(slug) {
+      document.getElementById('page-' + slug).classList.toggle('active', id === slug);
+    });
+    window.scrollTo(0, 0);
+    if (location.hash !== '#' + id) { history.pushState(null, '', '#' + id); }
+  }
+
+  window.addEventListener('popstate', function() {
+    const id = location.hash.replace('#', '') || 'home';
+    showPage(id);
+  });
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const id = location.hash.replace('#', '') || 'home';
+    showPage(id);
+  });
+</script>
+
+<script>
+
+  document.getElementById('joinForm-youth').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name-youth').value.trim();
+    const city = document.getElementById('city-youth').value.trim();
+    const state = document.getElementById('state-youth').value.trim();
+    const contact = document.getElementById('contact-youth').value.trim();
+    const context = document.getElementById('context-youth').value.trim();
+    const subject = 'ఆసక్తి నమోదు — అఖిల భారత యువజన లీగ్ — ' + name;
+    const bodyLines = [
+      'విభాగం: అఖిల భారత యువజన లీగ్',
+      'పేరు: ' + name,
+      'నగరం / జిల్లా: ' + city,
+      'రాష్ట్రం: ' + state,
+      'ఫోన్ / ఇమెయిల్: ' + contact,
+      context ? ('అదనపు వివరాలు: ' + context) : ''
+    ].filter(Boolean);
+    const body = bodyLines.join('\n');
+    window.location.href = 'mailto:aifbtelangana1939@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('confirmMsg-youth').classList.add('show');
+    this.querySelector('.submit').textContent = 'ఇమెయిల్ యాప్ తెరవబడింది';
+  });
+
+  document.getElementById('joinForm-students').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name-students').value.trim();
+    const city = document.getElementById('city-students').value.trim();
+    const state = document.getElementById('state-students').value.trim();
+    const contact = document.getElementById('contact-students').value.trim();
+    const context = document.getElementById('context-students').value.trim();
+    const subject = 'ఆసక్తి నమోదు — అఖిల భారత విద్యార్థి బ్లాక్ — ' + name;
+    const bodyLines = [
+      'విభాగం: అఖిల భారత విద్యార్థి బ్లాక్',
+      'పేరు: ' + name,
+      'నగరం / జిల్లా: ' + city,
+      'రాష్ట్రం: ' + state,
+      'ఫోన్ / ఇమెయిల్: ' + contact,
+      context ? ('అదనపు వివరాలు: ' + context) : ''
+    ].filter(Boolean);
+    const body = bodyLines.join('\n');
+    window.location.href = 'mailto:aifbtelangana1939@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('confirmMsg-students').classList.add('show');
+    this.querySelector('.submit').textContent = 'ఇమెయిల్ యాప్ తెరవబడింది';
+  });
+
+  document.getElementById('joinForm-women').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name-women').value.trim();
+    const city = document.getElementById('city-women').value.trim();
+    const state = document.getElementById('state-women').value.trim();
+    const contact = document.getElementById('contact-women').value.trim();
+    const context = document.getElementById('context-women').value.trim();
+    const subject = 'ఆసక్తి నమోదు — అఖిల భారత అగ్రగామి మహిళా సమితి — ' + name;
+    const bodyLines = [
+      'విభాగం: అఖిల భారత అగ్రగామి మహిళా సమితి',
+      'పేరు: ' + name,
+      'నగరం / జిల్లా: ' + city,
+      'రాష్ట్రం: ' + state,
+      'ఫోన్ / ఇమెయిల్: ' + contact,
+      context ? ('అదనపు వివరాలు: ' + context) : ''
+    ].filter(Boolean);
+    const body = bodyLines.join('\n');
+    window.location.href = 'mailto:aifbtelangana1939@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('confirmMsg-women').classList.add('show');
+    this.querySelector('.submit').textContent = 'ఇమెయిల్ యాప్ తెరవబడింది';
+  });
+
+  document.getElementById('joinForm-labour').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name-labour').value.trim();
+    const city = document.getElementById('city-labour').value.trim();
+    const state = document.getElementById('state-labour').value.trim();
+    const contact = document.getElementById('contact-labour').value.trim();
+    const context = document.getElementById('context-labour').value.trim();
+    const subject = 'ఆసక్తి నమోదు — కార్మిక సంఘాల సమన్వయ కేంద్రం — ' + name;
+    const bodyLines = [
+      'విభాగం: కార్మిక సంఘాల సమన్వయ కేంద్రం',
+      'పేరు: ' + name,
+      'నగరం / జిల్లా: ' + city,
+      'రాష్ట్రం: ' + state,
+      'ఫోన్ / ఇమెయిల్: ' + contact,
+      context ? ('అదనపు వివరాలు: ' + context) : ''
+    ].filter(Boolean);
+    const body = bodyLines.join('\n');
+    window.location.href = 'mailto:aifbtelangana1939@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('confirmMsg-labour').classList.add('show');
+    this.querySelector('.submit').textContent = 'ఇమెయిల్ యాప్ తెరవబడింది';
+  });
+
+  document.getElementById('joinForm-farmers').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name-farmers').value.trim();
+    const city = document.getElementById('city-farmers').value.trim();
+    const state = document.getElementById('state-farmers').value.trim();
+    const contact = document.getElementById('contact-farmers').value.trim();
+    const context = document.getElementById('context-farmers').value.trim();
+    const subject = 'ఆసక్తి నమోదు — అఖిల భారత అగ్రగామి కిసాన్ సభ — ' + name;
+    const bodyLines = [
+      'విభాగం: అఖిల భారత అగ్రగామి కిసాన్ సభ',
+      'పేరు: ' + name,
+      'నగరం / జిల్లా: ' + city,
+      'రాష్ట్రం: ' + state,
+      'ఫోన్ / ఇమెయిల్: ' + contact,
+      context ? ('అదనపు వివరాలు: ' + context) : ''
+    ].filter(Boolean);
+    const body = bodyLines.join('\n');
+    window.location.href = 'mailto:aifbtelangana1939@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('confirmMsg-farmers').classList.add('show');
+    this.querySelector('.submit').textContent = 'ఇమెయిల్ యాప్ తెరవబడింది';
+  });
+
+</script>
+
+</body>
+</html>
